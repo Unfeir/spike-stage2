@@ -16,6 +16,9 @@ class TestUtil(unittest.TestCase):
     def test_slugify_strips_leading_and_trailing_dashes(self) -> None:
         self.assertEqual(slugify("--Hello World--"), "hello-world")
 
+    def test_slugify_treats_underscores_as_separators(self) -> None:
+        self.assertEqual(slugify("a_b"), "a-b")
+
     def test_slugify_empty_string(self) -> None:
         self.assertEqual(slugify(""), "")
 
