@@ -1,6 +1,6 @@
 import unittest
 
-from src.util import add, slugify, titlecase
+from src.util import add, slug_title, slugify, titlecase
 
 
 class TestUtil(unittest.TestCase):
@@ -30,6 +30,15 @@ class TestUtil(unittest.TestCase):
 
     def test_titlecase_empty_string(self) -> None:
         self.assertEqual(titlecase(""), "")
+
+    def test_slug_title_combines_titlecase_and_slugify(self) -> None:
+        self.assertEqual(slug_title("hello world"), "hello-world")
+
+    def test_slug_title_handles_mixed_case_and_punctuation(self) -> None:
+        self.assertEqual(slug_title("hELLO   wORLD!!!"), "hello-world")
+
+    def test_slug_title_empty_string(self) -> None:
+        self.assertEqual(slug_title(""), "")
 
 
 if __name__ == "__main__":
